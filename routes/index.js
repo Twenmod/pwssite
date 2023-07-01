@@ -99,6 +99,7 @@ authorize().then(listMajors).catch(console.error);
 router.get('/', function(req, res, next) {
   authorize().then(listMajors).catch(console.error);
   if (amountA == 0 && amountB == 0) {
+    res.render('redirect.pug');
     res.redirect("https://pwsprojectgames.cyclic.app/");
   }else {
     if (amountA > amountB) {
