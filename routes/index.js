@@ -99,11 +99,11 @@ authorize().then(listMajors).catch(console.error);
 router.get('/', function(req, res, next) {
   authorize().then(listMajors).catch(console.error);
   if (amountA > amountB) {
-    console.log("returned B");
+    console.log("returned B B="+amountB);
     res.render('B.pug');
   }else {
     res.render('A.pug');
-    console.log("returned A");
+    console.log("returned A A="+amountA);
 
   }
 });
