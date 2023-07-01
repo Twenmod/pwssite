@@ -94,16 +94,17 @@ async function listMajors(auth) {
 }
 
 
-
 authorize().then(listMajors).catch(console.error);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   authorize().then(listMajors).catch(console.error);
-  console.log("gtest " + data);
   if (amountA > amountB) {
+    console.log("returned B");
     res.render('B.pug');
   }else {
     res.render('A.pug');
+    console.log("returned A");
+
   }
 });
 
