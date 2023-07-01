@@ -100,14 +100,15 @@ router.get('/', function(req, res, next) {
   authorize().then(listMajors).catch(console.error);
   if (amountA == 0 && amountB == 0) {
     res.redirect("https://pwsprojectgames.cyclic.app/");
-  }
-  if (amountA > amountB) {
-    console.log("returned B B="+amountB);
-    res.render('B.pug');
   }else {
-    res.render('A.pug');
-    console.log("returned A A="+amountA);
+    if (amountA > amountB) {
+      console.log("returned B B="+amountB);
+      res.render('B.pug');
+    }else {
+      res.render('A.pug');
+      console.log("returned A A="+amountA);
 
+    }
   }
 });
 
