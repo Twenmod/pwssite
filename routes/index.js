@@ -111,9 +111,9 @@ router.get('/', async function(req, res, next) {
 
   if (amountA > amountB) {
     console.log("returned B B="+amountB);
-    res.render('B.pug');
+    res.redirect('B.pug');
   }else {
-    res.render('A.pug');
+    res.redirect('A.pug');
     console.log("returned A A="+amountA);
   }
 });
