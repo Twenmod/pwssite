@@ -104,18 +104,17 @@ authorize().then(listMajors).catch(console.error);
 router.get('/', async function(req, res, next) {
   authorize().then(listMajors).catch(console.error);
   res.render('redirect.pug');
-  await wait(5000)
-  if (amountA == 0 && amountB == 0) {
+  while (amountA == 0 && amountB == 0) {
+    await wait(1000)
+    console.log("Awaiting");
+  }
 
+  if (amountA > amountB) {
+    console.log("returned B B="+amountB);
+    res.render('B.pug');
   }else {
-    if (amountA > amountB) {
-      console.log("returned B B="+amountB);
-      res.render('B.pug');
-    }else {
-      res.render('A.pug');
-      console.log("returned A A="+amountA);
-
-    }
+    res.render('A.pug');
+    console.log("returned A A="+amountA);
   }
 });
 
