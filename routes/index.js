@@ -93,28 +93,24 @@ async function listMajors(auth) {
 
 }
 
-async function wait (ms) {
-  return new Promise((resolve, reject) => {
-    setTimeout(resolve, ms)
-  });
-}
 
 authorize().then(listMajors).catch(console.error);
 /* GET home page. */
-router.get('/', async function(req, res, next) {
+router.get('/', function(req, res, next) {
   authorize().then(listMajors).catch(console.error);
-  res.render('redirect.pug');
-  while (amountA == 0 && amountB == 0) {
-    await wait(1000)
-    console.log("Awaiting");
-  }
 
-  if (amountA > amountB) {
-    console.log("returned B B="+amountB);
-    res.redirect('B.pug');
+  if (amountA == 0 && amountB == 0) {
+    res.render('redirect.pug');
+
   }else {
-    res.redirect('A.pug');
-    console.log("returned A A="+amountA);
+    if (amountA > amountB) {
+      console.log("returned B B="+amountB);
+      res.render('B.pug');
+    }else {
+      res.render('A.pug');
+      console.log("returned A A="+amountA);
+
+    }
   }
 });
 
