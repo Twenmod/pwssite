@@ -100,7 +100,8 @@ router.get('/', function(req, res, next) {
   authorize().then(listMajors).catch(console.error);
   if (amountA == 0 && amountB == 0) {
     res.render('redirect.pug');
-    res.redirect("https://pwsprojectgames.cyclic.app/");
+    res.redirect("/www");
+
   }else {
     if (amountA > amountB) {
       console.log("returned B B="+amountB);
