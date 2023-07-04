@@ -93,14 +93,19 @@ async function listMajors(auth) {
 
 }
 
+async function wait (ms) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, ms)
+  });
+}
 
 authorize().then(listMajors).catch(console.error);
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   authorize().then(listMajors).catch(console.error);
+  res.render('redirect.pug');
+  await wait(5000)
   if (amountA == 0 && amountB == 0) {
-    res.render('redirect.pug');
-    res.redirect("/www");
 
   }else {
     if (amountA > amountB) {
